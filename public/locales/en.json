@@ -1,0 +1,11 @@
+{
+    "welcome": "Welcome",
+    "home": "Home",
+    "admin": "Admin",
+    "notes": "Notes",
+    "users": "Users",
+    "checkin": "Check in",
+    "login": "Login",
+    "logout": "logout",
+    "error_checkin": "Failed to checkin. Please make sure your user id is correct."
+}
