@@ -11,7 +11,7 @@ export const UserTable: FC<any> = ({ users }: UsertableProps) => {
   const [filter, setFilter] = useState<string>("");
 
   return (
-    <section className="grid grid-rows gap-4">
+    <section className="grid grid-rows gap-4 h-3/4 content-start">
       <form className="flex rounded gap-2 h-10 jutsify-around">
         <input
           placeholder="filter"
@@ -24,12 +24,12 @@ export const UserTable: FC<any> = ({ users }: UsertableProps) => {
       <div
         className={`flex h-10 w-full justify-between text-left text-black rounded pr-40`}>
         <div className="flex justify-between p-2 w-full rounded text-left text-white">
-          <p className="w-40">Name</p>
+          <p className="w-80">Name</p>
           <p className="w-20">Geburtstag</p>
           <p className="w-20">Erstellt am</p>
         </div>
       </div>
-      <div className="grid grid-rows gap-4 pr-4 scrollbar scrollbar-thumb-primary scrollbar-track-slate-700 overflow-y-scroll overflow-x-hidden w-full h-2/3">
+      <div className="grid grid-rows gap-4 pr-6 scrollbar scrollbar-thumb-primary scrollbar-track-slate-700 overflow-y-auto h-full overflow-x-hidden">
         {users?.map((user: user, key: any) => {
           if (
             user.name?.toLowerCase().includes(filter) ||

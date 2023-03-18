@@ -5,7 +5,7 @@ import "../output.css";
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html>
-      <body className="grid grid-rows w-screen h-screen overflow-hidden bg-body z-20">
+      <body className="grid grid-rows w-screen h-screen overflow-hidden bg-body z-20 select-none">
         <header>
           <nav className="flex justify-around w-full mt-2 h-20 z-20">
             <div className="grid grid-rows cursor-default justify-center">

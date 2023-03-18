@@ -24,10 +24,10 @@ export default async function RootLayout({
 }) {
   return (
     <html>
-      <body className="h-screen w-screen overflow-hidden">
+      <body className="h-screen w-screen overflow-hidden select-none">
         <header>
-          <nav className="relative flex justify-around w-full pt-2 place-items-center z-20">
-            <div className="grid grid-rows cursor-default">
+          <nav className="relative flex justify-around w-full m-8 place-items-center z-20">
+            <div className="grid grid-rows cursor-default self-star w-full">
               <h1 className="text-2xl font-semibold text-primary">
                 {process.env.COMPANY_NAME}
               </h1>
@@ -35,28 +35,15 @@ export default async function RootLayout({
                 {process.env.COMPANY_SLOGAN}
               </p>
             </div>
-            <div id="center" className="flex justify-around w-1/2">
-              <div className="flex gap-10">
-                <NavLink
-                  href="/"
-                  className="hover:scale-[105%] transition-transform ease-in-out text-highlight hover:text-primary mt-2 cursor-pointer">
-                  CheckIn
-                </NavLink>
-                <NavLink
-                  href="/events"
-                  className="hover:scale-[105%] transition-transform ease-in-out text-highlight hover:text-primary mt-2 cursor-pointer">
-                  Events
-                </NavLink>
-              </div>
-              <NavLink
-                href="/admin/"
-                className="hover:scale-[105%] transition-transform ease-in-out h-10 text-secondary bg-primary rounded-[10px] hover:bg-opacity-80 mt-2 uppercase p-2 shadow-3xl cursor-pointer">
-                Admin
-              </NavLink>
-            </div>
+           
           </nav>
         </header>
         {children}
+        <NavLink
+                href="/admin/"
+                className="absolute z-20 bottom-10 right-10 hover:scale-[105%] transition-transform ease-in-out h-10 text-white bg-primary rounded-[10px] hover:bg-opacity-80 mt-2 uppercase p-2 shadow-3xl cursor-pointer">
+                Admin
+              </NavLink>
       </body>
     </html>
   );

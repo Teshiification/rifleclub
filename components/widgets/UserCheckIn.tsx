@@ -5,7 +5,6 @@ import supabase from "../../lib/supabase";
 
 async function createCheckIn(userid: string) {
   try {
-    console.log(`try: ${userid} login`);
     const { data, error } = await supabase
       .from("checkin")
       .insert([{ user_id: userid }]);
@@ -88,27 +87,10 @@ export default function UserCheckin() {
           onClick={() => setIsSubmitting(true)}
           className={
             isSubmitting
-              ? "flex gap-4 justify-center place-content-center animate-pulse bg-secondary font-semibold text-xl h-20 bg-opacity-80 rounded-[10px] cursor-wait"
-              : "hover:scale-[101%] transition-transform ease-in-out font-semibold text-xl h-20 bg-primary bg-opacity-20 hover:bg-opacity-40 rounded-[10px]"
+              ? "transition-transform ease-in-out font-semibold text-xl h-20 bg-secondary bg-opacity-20 hover:bg-opacity-40 rounded-[10px] select-none"
+              : "hover:scale-[101%] transition-transform ease-in-out font-semibold text-xl h-20 bg-primary bg-opacity-20 hover:bg-opacity-40 rounded-[10px] select-none"
           }>
           Check In
-          {isSubmitting ? (
-            <svg
-              className="animate-spin"
-              version="1.1"
-              id="L9"
-              xmlns="http://www.w3.org/2000/svg"
-              x="0px"
-              y="0px"
-              viewBox="0 0 100 100"
-              enable-background="new 0 0 0 0">
-              <path
-                fill="#fff"
-                d="M73,50c0-12.7-10.3-23-23-23S27,37.3,27,50 M30.9,50c0-10.5,8.5-19.1,19.1-19.1S69.1,39.5,69.1,50"></path>
-            </svg>
-          ) : (
-            <></>
-          )}
         </button>
       </form>
     </div>

@@ -7,6 +7,27 @@ const NewUserForm: FC<any> = () => {
   const [lastname, setLastname] = useState<string>("");
   const [birthday, setBirthday] = useState<string>("");
 
+  const [departments, setDepartments] = useState<departments[]>();
+  const [userDepartments, setUserDepartments] = useState<departments[]>();
+
+  function DepartmentIsChecked(department:departments){
+    if(userDepartments===undefined) return false;
+    let returner = false;
+    userDepartments?.map((item:departments)=>{
+      if(item.id == department?.id) {returner= true;}
+    })
+    return returner;
+  }
+  
+  function DepartmentID(name:string){
+    if(departments===undefined) return false;
+    let returner = 0;
+    departments?.map((department:departments)=>{
+      if(department.name == name) {returner= department.id ;}
+    })
+    return returner;
+  }
+
   const submit = async (event: any) => {
     try {
       console.log(event);
@@ -32,7 +53,7 @@ const NewUserForm: FC<any> = () => {
   return (
     <form
       onSubmit={submit}
-      className="bg-white bg-opacity-10 grid grid-rows gap-4 rounded-[15px] p-2">
+      className="mx-auto w-1/2 md:w-screen justify-center bg-white bg-opacity-10 grid grid-rows gap-4 rounded-[15px] p-2">
       <h1 className="flex text-gray-500 justify-between">
         <div>Neues Mitglied</div>
       </h1>
@@ -49,7 +70,7 @@ const NewUserForm: FC<any> = () => {
           <input
             required
             type={"text"}
-            value={lastname}
+            value={lastname}            
             onChange={(item) => setLastname(item.target.value)}
           />
         </div>

@@ -31,35 +31,31 @@ const monthNames = [
 const BirthdayCard: FC<BirthdayCardProps> = (props: BirthdayCardProps) => {
   const { users, monthIndex, className, showIcon, title } = props;
 
-  // if month is smaller than 0 get december(11), if it is bigger than 11 get january(0)
-  const month = monthIndex >= 0 ? (monthIndex < 12 ? monthIndex : 0) : 11;
-
   return (
     <Card
       color="green"
       icon={showIcon && <BirthdayCakeIcon width={40} height={40} />}
-      title={`${title ? title : ""} ${monthNames[month]}`}
-      className={className}
+      title={`${title ? title : ""} ${monthNames[monthIndex-1]}`}
+      className={`content-start ${className}`}
       children={
         <>
           {users &&
             users?.map((user, key) => {
               const birthday: Date | undefined =
                 user.birthday && new Date(user.birthday);
-              if (birthday && birthday.getMonth() == month) {
                 return (
                   <Link
                     key={key}
                     href={`/admin/users/${user.id}`}
                     className={
-                      "pl-2 rounded hover:bg-white hover:bg-opacity-10 hover:border-white hover:border-l-4 w-full h-6 text-left"
+                      "pl-2 pr-2 rounded hover:bg-white hover:bg-opacity-10 border-transparent hover:border-white border-l-4 w-full h-6 text-left"
                     }>
-                    <p className="h-fit">
-                      {user.name} {user.lastname} am {birthday.getDate()}.
+                    <p className="flex gap-2 h-fit justify-between">
+                      <p>{user.name} {user.lastname}</p>
+                      <p>{`*${birthday.getDate()}.${birthday.getMonth()}.${birthday.getFullYear()}`}</p>
                     </p>
                   </Link>
                 );
-              }
             })}
         </>
       }

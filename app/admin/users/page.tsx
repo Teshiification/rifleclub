@@ -7,8 +7,9 @@ async function getUsers() {
     const { data, error } = await supabase
       .from("users")
       .select()
+      .order("active", { ascending: false })
+      .order("lastname")
       .order("name")
-      .order("lastname");
 
     if (!data || error) {
       throw error;
@@ -24,7 +25,7 @@ export default async function UsersPage() {
   const users = await getUsers();
 
   return (
-    <div className="grid grid-rows p-10 h-full w-full">
+    <div className="grid grid-rows p-10 h-screen w-full">
       <UserTable users={users} />
     </div>
   );

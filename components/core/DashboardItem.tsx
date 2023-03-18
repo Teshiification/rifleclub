@@ -10,7 +10,7 @@ export const DashboardItemNewUser: FC<any> = () => {
   return (
     <Link href={"/admin/users/newuser"}>
       <Card
-        className={"w-40 h-20"}
+        className={"w-40 h-20 hover:bg-indigo-600"}
         childClassName={"flex justify-center w-full gap-2 font-bold"}
         color="indigo">
         Neues Mitglied
@@ -26,7 +26,7 @@ export const DashboardItemLicense: FC<any> = () => {
   return (
     <Link href={"/admin/users/license"}>
       <Card
-        className={"w-40 h-20"}
+        className={"w-40 h-20 hover:bg-orange-600"}
         childClassName={"flex justify-center w-full gap-2 font-bold"}
         color="orange">
         Lizenzverwaltung
@@ -42,7 +42,7 @@ export const DashboardItemUserlist: FC<any> = () => {
   return (
     <Link href={"/admin/users"}>
       <Card
-        className={"w-40 h-20"}
+        className={"w-40 h-20 hover:bg-teal-600"}
         childClassName={"flex justify-center w-full gap-2 font-bold"}
         color="teal">
         Mitgliederliste

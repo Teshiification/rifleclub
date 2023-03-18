@@ -61,7 +61,7 @@ const UserTableItem: FC<any> = ({ user, className }: UserTableItemProps) => {
         href={`/admin/users/${user.id}`}
         className="flex justify-between p-2 w-full rounded text-left">
         {/*<p className="w-fit">{user.id}</p>*/}
-        <p className="w-40">
+        <p className="w-80 overflow-hidden">
           {user.name}, {user.lastname}
         </p>
         <p className="w-20">{new Date(user?.birthday).toLocaleDateString()}</p>
