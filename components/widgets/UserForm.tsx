@@ -14,13 +14,16 @@ const UserForm: FC<any> = ({ user }: { user: user }) => {
   );
 
   //Adress information
-  const [zip, setZIP] = useState<number | null>(user.zip || null);
-  const [cityName, setCityName] = useState<string | null>(
-    user.cityName || null
+  const [postal, setPostal] = useState<number>(user.postal || 0);
+  const [city, setCity] = useState<string>(
+    user.city || ""
   );
-  const [adress, setAdress] = useState<string>(user.adress || "");
-  const [adressAdditionals, setAdressAdditionals] = useState<string>(
-    user.adressAdditionals || ""
+  const [street, setStreet] = useState<string>(user.street || "");
+  const [streetAdditionals, setStreetAdditionals] = useState<string>(
+    user.street_ad || ""
+  );
+  const [streetNumber, setStreetNumber] = useState<number>(
+    user.street_nr || 0
   );
 
   const [license, setLicense] = useState<boolean>(user.license || false);
@@ -68,6 +71,12 @@ const UserForm: FC<any> = ({ user }: { user: user }) => {
     user.name = name;
     user.lastname = lastname;
     user.birthday = birthday;
+    user.license = license;
+    user.city = city;
+    user.postal = postal;
+    user.street = street;
+    user.street_ad = streetAdditionals;
+    user.street_nr = streetNumber;
 
     event.preventDefault();
     const { data, error } = await supabase
@@ -84,6 +93,8 @@ const UserForm: FC<any> = ({ user }: { user: user }) => {
     setName(data.name);
     setLastname(data.lastname);
     setBirthday(new Date(data.birthday));
+
+    alert("user gespeichert")
   };
 
   useEffect(() => {
@@ -236,37 +247,45 @@ yearid--;
           </div>
         </div>
 
-        {/*<div id="adressContainer" className="grid gap-4 w-full">
+        <div id="adressContainer" className="grid gap-4 w-full">
         <h2>Adresse</h2>
         <div className="flex gap-10 text-xl font-semibold justify-between">
           <h3 className="text-primary">Straße: </h3>
           <input
             type={"text"}
-            value={adress}
-            onChange={(item) => setAdress(item.target.value)}
+            value={street}
+            onChange={(item) => setStreet(item.target.value)}
           />
+          <h3 className="text-primary">Nummer: </h3>
+          <input
+          className="w-12"
+            type={"number"}
+            value={streetNumber}
+            onChange={(item) => setStreetNumber(Number(item.target.value))}
+            />
           <h3 className="text-primary">Adresszusatz: </h3>
           <input
+          className="w-12"
             type={"text"}
-            value={adressAdditionals}
-            onChange={(item) => setAdressAdditionals(item.target.value)}
+            value={streetAdditionals}
+            onChange={(item) => setStreetAdditionals(item.target.value)}
             />
             </div>
-            <div className="flex gap-10 text-xl font-semibold justify-between">
+            <div className="flex gap-10 text-xl font-semibold justify-start">
             <h3 className="text-primary">PLZ: </h3>
           <input
             type={"number"}
-            value={zip}
-            onChange={(item) => setZIP(item.target.value)}
+            value={postal}
+            onChange={(item) => setPostal(Number(item.target.value))}
           />
           <h3 className="text-primary">Ort: </h3>
           <input
           type={"text"}
-            value={cityName}
-            onChange={(item) => setCityName(item.target.value)}
+            value={city}
+            onChange={(item) => setCity(item.target.value)}
           />
         </div>
-      </div>*/}
+      </div>
 
 <button
           type={"submit"}

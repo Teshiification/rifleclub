@@ -4,7 +4,8 @@ import supabase from "../../../../lib/supabase";
 
 export default async function User({ params }: any) {
   const user: user = await getUser(params.id);
-  if (user) return <UserForm user={user} />;
+
+  if (user) return <UserForm user={user}/>;
   else return <>not found</>;
 }
 

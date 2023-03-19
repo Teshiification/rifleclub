@@ -10,6 +10,13 @@ const NewUserForm: FC<any> = () => {
   const [departments, setDepartments] = useState<departments[]>();
   const [userDepartments, setUserDepartments] = useState<departments[]>();
 
+  //Adress information
+  const [postal, setPostal] = useState<number>( 0);
+  const [city, setCity] = useState<string>("");
+  const [street, setStreet] = useState<string>("");
+  const [streetAdditionals, setStreetAdditionals] = useState<string>("");
+  const [streetNumber, setStreetNumber] = useState<number>(0);
+
   function DepartmentIsChecked(department:departments){
     if(userDepartments===undefined) return false;
     let returner = false;
@@ -35,14 +42,10 @@ const NewUserForm: FC<any> = () => {
       console.log(`Saving: ${name} ${lastname}`);
       const { data, error } = await supabase
         .from("users")
-        .insert({ name, lastname, birthday })
+        .insert({ name, lastname, birthday, postal, city,street,street_ad:streetAdditionals, street_nr:streetNumber })
         .select()
         .single();
       if (error) throw error;
-
-      setName(data.name);
-      setLastname(data.lastname);
-      setBirthday(new Date(data.birthday).toISOString().split("T")[0]);
 
       alert("User erfolgreich angelegt");
     } catch (error) {
@@ -83,6 +86,47 @@ const NewUserForm: FC<any> = () => {
           />
         </div>
       </div>
+
+      <div id="adressContainer" className="grid gap-4 w-full">
+        <h2>Adresse</h2>
+        <div className="flex gap-10 text-xl font-semibold justify-between">
+          <h3 className="text-primary">Straße: </h3>
+          <input
+            type={"text"}
+            value={street}
+            onChange={(item) => setStreet(item.target.value)}
+          />
+          <h3 className="text-primary">Nummer: </h3>
+          <input
+          className="w-12"
+            type={"number"}
+            value={streetNumber}
+            onChange={(item) => setStreetNumber(Number(item.target.value))}
+            />
+          <h3 className="text-primary">Adresszusatz: </h3>
+          <input
+          className="w-12"
+            type={"text"}
+            value={streetAdditionals}
+            onChange={(item) => setStreetAdditionals(item.target.value)}
+            />
+            </div>
+            <div className="flex gap-10 text-xl font-semibold justify-start">
+            <h3 className="text-primary">PLZ: </h3>
+          <input
+            type={"number"}
+            value={postal}
+            onChange={(item) => setPostal(Number(item.target.value))}
+          />
+          <h3 className="text-primary">Ort: </h3>
+          <input
+          type={"text"}
+            value={city}
+            onChange={(item) => setCity(item.target.value)}
+          />
+        </div>
+      </div>
+
       <button type={"submit"} className="bg-green-800 h-10 rounded items-end">
         Neues Mitglied anlegen
       </button>

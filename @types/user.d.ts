@@ -6,8 +6,9 @@ interface user {
     birthday: Date,
     active:boolean,
     license?: boolean,
-    adress?: string,
-    adressAdditionals?: string,
-    zip?: number,
-    cityName?:string,
+    postal?: number,
+    city?: string,
+    street?: string,
+    street_nr?: number,
+    street_ad?: string,
 }
