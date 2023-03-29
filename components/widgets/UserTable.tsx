@@ -23,7 +23,7 @@ export const UserTable: FC<any> = ({ users }: UsertableProps) => {
       </form>
       <div
         className={`flex h-10 w-full justify-between text-left text-black rounded pr-40`}>
-        <div className="flex justify-between p-2 w-full rounded text-left text-white">
+        <div className="flex justify-between p-2 pr-10 w-full rounded text-left text-white">
           <p className="w-80">Name</p>
           <p className="w-20">Geburtstag</p>
           <p className="w-20">Erstellt am</p>

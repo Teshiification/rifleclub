@@ -35,7 +35,7 @@ const BirthdayCard: FC<BirthdayCardProps> = (props: BirthdayCardProps) => {
     <Card
       color="green"
       icon={showIcon && <BirthdayCakeIcon width={40} height={40} />}
-      title={`${title ? title : ""} ${monthNames[monthIndex-1]}`}
+      title={`${title ? title : ""} ${monthNames[monthIndex - 1]}`}
       className={`content-start ${className}`}
       children={
         <>
@@ -43,19 +43,23 @@ const BirthdayCard: FC<BirthdayCardProps> = (props: BirthdayCardProps) => {
             users?.map((user, key) => {
               const birthday: Date | undefined =
                 user.birthday && new Date(user.birthday);
-                return (
-                  <Link
-                    key={key}
-                    href={`/admin/users/${user.id}`}
-                    className={
-                      "pl-2 pr-2 rounded hover:bg-white hover:bg-opacity-10 border-transparent hover:border-white border-l-4 w-full h-6 text-left"
-                    }>
-                    <p className="flex gap-2 h-fit justify-between">
-                      <p>{user.name} {user.lastname}</p>
-                      <p>{`*${birthday.getDate()}.${birthday.getMonth()}.${birthday.getFullYear()}`}</p>
+              return (
+                <Link
+                  key={key}
+                  href={`/admin/users/${user.id}`}
+                  className={
+                    "pl-2 pr-2 rounded hover:bg-white hover:bg-opacity-10 border-transparent hover:border-white border-l-4 w-full h-6 text-left"
+                  }>
+                  <p className="flex gap-2 h-fit justify-between">
+                    <p>
+                      {user.name} {user.lastname}
                     </p>
-                  </Link>
-                );
+                    <p>{`*${birthday.getDate()}.${
+                      birthday.getMonth() + 1
+                    }.${birthday.getFullYear()}`}</p>
+                  </p>
+                </Link>
+              );
             })}
         </>
       }

@@ -9,7 +9,7 @@ async function getUsers() {
       .select()
       .order("active", { ascending: false })
       .order("lastname")
-      .order("name")
+      .order("name");
 
     if (!data || error) {
       throw error;
