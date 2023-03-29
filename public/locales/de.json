@@ -1,0 +1,11 @@
+{
+    "welcome": "Willkommen",
+    "home": "Startseite",
+    "admin": "Admin",
+    "notes": "Notizen",
+    "users": "Mitglieder",
+    "checkin": "Einchecken",
+    "login": "Einloggen",
+    "logout": "Ausloggen",
+    "error_checkin": "Fehler beim einchecken. Bitte achten Sie auf die korrekte Eingabe Ihrer User Id."
+}
